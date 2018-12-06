@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- user-scalable=no 代表不要让用户自己缩放 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>mall</title>
+  </head>
+  <style>
+
+  </style>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      let htmlwidth = document.documentElement.clientWidth || document.body.clientWidth;
+      let htmlDom = document.getElementsByTagName('html')[0];
+      //  以iphone5 320的宽度做适配，则设定要默认 1rem = 16px 
+      // 则 320(获取屏幕的宽度) / 20 = 16 
+      if(htmlwidth>750){htmlwidth=750}
+      htmlDom.style.fontSize = htmlwidth/20 + 'px';
+
+    </script>
+  </body>
+</html>
