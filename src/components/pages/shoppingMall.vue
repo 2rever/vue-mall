@@ -54,20 +54,36 @@
     <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent>
     <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent>
     <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent>
+
+    <!-- Hot Area -->
+    <div class="hot-area">
+      <div class="hot-title">热卖商品</div>
+      <div class="hot-goods">
+        <van-list gutter="20">
+          <van-row>
+            <van-col span="12" v-for="(item,index) in hotGoods" :key="index">
+              <goodsInfoComponent :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goodsInfoComponent>
+            </van-col>
+          </van-row>
+        </van-list>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import floorComponent from "../component/floorComponent";
-import { toMoney } from "@/filter/moneyFilter.js"
+import goodsInfoComponent from "../component/goodsInfoComponent";
+import { toMoney } from "@/filter/moneyFilter.js";
+import url from '@/serviceAPI.config.js'
 export default {
   filters: {
     moneyFilter(money) {
-      return toMoney(money)
+      return toMoney(money);
     }
   },
-  components: { floorComponent },
+  components: { floorComponent, goodsInfoComponent },
   data() {
     return {
       swiperOption: {
@@ -81,13 +97,14 @@ export default {
       floor1: [],
       floor2: [],
       floor3: [],
-      floorName: {}
+      floorName: {},
+      hotGoods: []
     };
   },
   created() {
     axios
       .get(
-        "https://www.easy-mock.com/mock/5c0392023b23d255f07ec950/smileVue/index"
+        url.getShopingMallInfo
       )
       .then(res => {
         console.log(res.data.data);
@@ -100,6 +117,7 @@ export default {
           this.floor2 = res.data.data.floor2;
           this.floor3 = res.data.data.floor3;
           this.floorName = res.data.data.floorName;
+          this.hotGoods = res.data.data.hotGoods;
         }
       })
       .catch(err => console.log(err));
@@ -155,5 +173,11 @@ export default {
   border-right: 1px solid #eee;
   font-size: 12px;
   text-align: center;
+}
+.hot-area {
+  text-align: center;
+  font-size: 14px;
+  height: 1.8rem;
+  line-height: 1.8rem;
 }
 </style>
