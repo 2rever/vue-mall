@@ -12,7 +12,7 @@
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
     </ul>
     <h3>Essential Links</h3>
-    <h1>这是new分支的代码</h1>
+    <h1>这是new分支d的代码</h1>
     <van-button type="danger" >超级按钮</van-button>
     <ul>
       <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
