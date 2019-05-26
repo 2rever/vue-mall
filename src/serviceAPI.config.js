@@ -1,7 +1,7 @@
-const BASEURL = "https://www.easy-mock.com/mock/5c0392023b23d255f07ec950/smileVue/"
+const BASEURL = "http://reachxout.coding.me/miao/mallInfo.json"
 const URL = {
   getShopingMallInfo: BASEURL + 'index',
-  getGoodsInfo : BASEURL + 'getGoodsInfo'
+  getGoodsInfo: BASEURL + 'getGoodsInfo'
 }
 
-module.exports  = URL
+module.exports = URL
